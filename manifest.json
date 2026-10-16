@@ -1,0 +1,40 @@
+{
+  "name": "WebXDownloader",
+  "description": "Enables downloading of Webex meeting recordings",
+  "version": "1.3.3",
+  "manifest_version": 3,
+  "homepage_url": "https://github.com/jacopo-j/WebXDownloader",
+  "icons": {
+    "128": "icon.png"
+  },
+  "permissions": [
+    "downloads",
+    "storage",
+    "tabs",
+    "webRequest"
+  ],
+  "host_permissions": [
+    "*://*.webex.com/*",
+    "https://api.github.com/repos/jacopo-j/webxdownloader/releases/latest",
+    "<all_urls>"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://*.webex.com/*"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "run_at": "document_end"
+    }
+  ],
+  "action": {
+    "default_icon": "icon.png",
+    "default_title": "WebXDownloader",
+    "default_popup": "popup.html"
+  }
+}
